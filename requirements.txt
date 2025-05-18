@@ -1,54 +1,7 @@
-altair @ file:///home/conda/feedstock_root/build_artifacts/altair-split_1711824856061/work
-attrs @ file:///home/conda/feedstock_root/build_artifacts/attrs_1741918516150/work
-blinker @ file:///home/conda/feedstock_root/build_artifacts/blinker_1731096409132/work
-Brotli @ file:///D:/bld/brotli-split_1725267609074/work
-cachetools @ file:///home/conda/feedstock_root/build_artifacts/cachetools_1740094013202/work
-certifi @ file:///home/conda/feedstock_root/build_artifacts/certifi_1746569525376/work/certifi
-cffi @ file:///D:/bld/cffi_1725560792189/work
-charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1728479282467/work
-click @ file:///D:/bld/click_1734858834134/work
-colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1733218098505/work
-future @ file:///home/conda/feedstock_root/build_artifacts/future_1738926421307/work
-gitdb @ file:///home/conda/feedstock_root/build_artifacts/gitdb_1735887193964/work
-GitPython @ file:///home/conda/feedstock_root/build_artifacts/gitpython_1735929639977/work
-idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1726459485162/work
-importlib_metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1737420181517/work
-importlib_resources @ file:///home/conda/feedstock_root/build_artifacts/importlib_resources_1736252299705/work
-Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1741263328855/work
-jsonschema @ file:///home/conda/feedstock_root/build_artifacts/jsonschema_1733472696581/work
-jsonschema-specifications @ file:///tmp/tmpuvkyqc9y/src
-MarkupSafe @ file:///D:/bld/markupsafe_1733219648915/work
-mkl-service==2.4.0
-numpy==1.21.6
-opencv-python==4.11.0.86
-packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1733203243479/work
-pandas @ file:///D:/bld/pandas_1744430479169/work
-Pillow==9.3.0
-pkgutil_resolve_name @ file:///home/conda/feedstock_root/build_artifacts/pkgutil-resolve-name_1733344503739/work
-protobuf @ file:///D:/bld/protobuf_1741124607566/work/bazel-bin/python/dist/protobuf-5.29.3-cp39-abi3-win_amd64.whl#sha256=7d028c041cbaedc78806e69028de43d3f7e4dc5d4e924785c3e634a1b2ad9180
-pyarrow==20.0.0
-pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1636257122734/work
-pydeck @ file:///home/conda/feedstock_root/build_artifacts/pydeck_1738346561094/work
-PySocks @ file:///D:/bld/pysocks_1733217287171/work
-python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1733215673016/work
-pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1742920838005/work
-PyYAML @ file:///D:/bld/pyyaml_1737454672828/work
-referencing @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_referencing_1737836872/work
-requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1716354486713/work
-rpds-py @ file:///D:/bld/bld/rattler-build_rpds-py_1747322924/work
-six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
-smmap @ file:///home/conda/feedstock_root/build_artifacts/smmap_1739781697784/work
-streamlit @ file:///home/conda/feedstock_root/build_artifacts/streamlit_1747153904630/work
-tenacity @ file:///home/conda/feedstock_root/build_artifacts/tenacity_1743640740204/work
-toml @ file:///home/conda/feedstock_root/build_artifacts/toml_1734091811753/work
-toolz @ file:///home/conda/feedstock_root/build_artifacts/toolz_1733736030883/work
-torch==1.9.1
-torchvision==0.10.1
-tornado @ file:///D:/bld/tornado_1747384455519/work
-typing_extensions==4.13.2
-tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1742745135198/work
-urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1708239446578/work
-watchdog @ file:///D:/bld/watchdog_1730492895081/work
-win_inet_pton @ file:///D:/bld/win_inet_pton_1727796272493/work
-wincertstore==0.2
-zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1732827521216/work
+streamlit>=1.10.0
+torch>=2.0.0
+torchvision>=0.15.0
+opencv-python>=4.7.0
+numpy>=1.23.0
+Pillow>=9.0.0
+altair>=4.0
