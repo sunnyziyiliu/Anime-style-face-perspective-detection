@@ -256,7 +256,7 @@ def suggest_adjustments(results, ratios, landmarks, tol_col=0.1):
                 nm, _, desc = seg.partition(" (")
                 desc = desc.rstrip(")")
                 brow_segs = {
-                    "brow tail":   (2,6),
+                    "brow tail":   (3,8),
                     "brow middle": (4,7),
                     "brow head":   (5,6),
                 }
