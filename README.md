@@ -1,22 +1,54 @@
-# Anime face landmark detection by deep cascaded regression
-This is an implementation of deep cascaded regression for anime face landmark detection on Pytorch.
+# Anime-Style Face Perspective Detection
 
-![landmark image](image/readme.bmp)
+An interactive Streamlit app that detects 24 facial keypoints on anime-style faces, allows manual offset corrections, evaluates facial symmetry & perspective, and visualizes results.
 
-## Dependencies
-- Python3.7
-- Pytorch==1.3
-- opencv-python
+---
+## 🔗 Source model
 
-## Downloads
-Download the checkpoint file from [google_drive](https://drive.google.com/open?id=1NckKw7elDjQTllRxttO87WY7cnQwdMqz) and cascade file for face detection from [nagadomi/lbpcascade_animeface](https://github.com/nagadomi/lbpcascade_animeface)
+(https://github.com/kanosawa/anime_face_landmark_detection)
 
-```
-wget https://raw.githubusercontent.com/nagadomi/lbpcascade_animeface/master/lbpcascade_animeface.xml
-```
+---
 
-## Usage
+## 🔗 Live Demo
 
-```
-python example.py
-```
+[View the app online](https://sunnyziyiliu-anime-style-face-perspective-detection-app-rajcps.streamlit.app/)
+
+---
+
+## 🛠️ Features
+
+- **Automatic Keypoint Detection**  
+  Uses a pretrained Cascaded Face Alignment (CFA) model to predict 24 landmarks on anime faces.
+
+- **Manual Offset Corrections**  
+  Sidebar UI lets you add/remove multiple `(index, Δx, Δy)` adjustments, then apply them all at once.
+
+- **Alignment Checks**  
+  - Eye parallelism  
+  - Nose–lips–chin colinearity  
+  - (Optional) Eyebrow parallelism  
+  - (Optional) Overall feature alignment  
+
+- **Perspective Ratios & Face Orientation**  
+  Computes projection-based ratios for eye head/middle/tail and mouth, identifies if the face is turned left/right or frontal, and highlights any perspective errors.
+
+- **Color-Coded Results**  
+  - ✔️ Green text for correct  
+  - ❌ Red text for errors  
+  - ⚪ Gray text for skipped checks  
+  - ⚫ Black text for neutral orientation messages
+
+---
+
+## 📝 Requirements
+
+Captured via `requirements.txt`:
+
+```text
+streamlit>=1.10.0
+torch>=2.0.0
+torchvision>=0.15.0
+opencv-python>=4.7.0
+numpy>=1.23.0
+Pillow>=9.0.0
+altair>=4.0
