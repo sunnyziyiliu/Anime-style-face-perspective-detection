@@ -8,7 +8,8 @@ import streamlit as st
 from torchvision import transforms
 from PIL import Image
 from CFA import CFA
-from eval_utils import evaluate, slope, foot_of_perp  
+from eval_utils import evaluate, fit_midline, perp_dist
+from eval_utils import suggest_adjustments, adjust_landmark_pair
 # ——— HEAD —————————————————————
 st.set_page_config(
     page_title="Anime-style face perspective detection",
@@ -62,7 +63,7 @@ if st.sidebar.button("Apply all offsets"):
 else:
     st.session_state.apply_all = False
 
-skip_expr = st.sidebar.checkbox("Exaggerated Expression (skip brow & overall checks)")
+skip_expr = st.sidebar.checkbox("Exaggerated Expression (skip brow checks)")
 
 
 
@@ -176,10 +177,76 @@ st.image(
 results, ratios = evaluate(landmarks, skip_expr=skip_expr)
 
 # SHOW EVAL
-st.subheader("Alignment")
-for line in results:
-    st.markdown(f"- {line}")
+#
+# for line in results:
+#     st.markdown(f"- {line}")
+
+
+
+st.subheader("Alignment Checks")
+for text, status in results[:-2]: 
+    if status == "correct":
+        color = "green"
+    elif status == "error":
+        color = "red"
+    else:
+        color = "gray"
+    st.markdown(f"<span style='color:{color}'>{text}</span>", unsafe_allow_html=True)
+
 
 st.subheader("Perspective Ratios")
-for name, val in ratios.items():
-    st.markdown(f"- {name}: {val:.3f}")
+# for name, val in ratios.items():
+#     st.write(f"- {name}: {val:.3f}")
+
+overall_text, _ = results[-2]
+st.markdown(f"<span style='color:black'>{overall_text}</span>", unsafe_allow_html=True)
+
+persp_text, persp_status = results[-1]
+persp_color = "green" if persp_status == "correct" else "red"
+st.markdown(f"<span style='color:{persp_color}'>{persp_text}</span>", unsafe_allow_html=True)
+
+
+
+
+# adjust advice image version
+mid_idxs = [9,21,23,1]
+pts_mid = np.array([landmarks[i] for i in mid_idxs], dtype=np.float32)
+mean, dir_vec = fit_midline(pts_mid)
+med = float(np.median([ratios[n] for n in ratios if not np.isnan(ratios[n])]))
+
+# all adjust option
+suggests = suggest_adjustments(results, ratios, landmarks)
+
+if suggests:
+    st.subheader("Visual modification suggestions")
+    # option box
+    sel = st.selectbox("Select an error to adjust", list(suggests.keys()))
+    mode = st.radio("Adjustment mode", ["Lock Left", "Lock Right", "Average"])
+
+    # find the pair
+    item = suggests[sel]
+    adjusted = []
+    if item["type"] == "persp":
+        for (i,j,name) in item["pairs"]:
+            adjusted += adjust_landmark_pair(
+                landmarks, mean, dir_vec, i, j, mode, med
+            )
+    elif item["type"] in ("eye","brow"):
+        for (i,j,name) in item["pairs"]:
+            adjusted += adjust_landmark_pair(
+                landmarks, mean, dir_vec, i, j, mode, med
+            )
+
+    # draw
+    vis = annot.copy()
+    for idx, nx, ny in adjusted:
+        cv2.circle(vis, (nx, ny), 5, (0,0,255), -1)
+        cv2.putText(vis, f"{idx}", (nx+5, ny-5),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,255), 2)
+
+    st.image(cv2.cvtColor(vis, cv2.COLOR_BGR2RGB), caption="Adjustment Suggestions")
+else:
+    st.markdown(
+    "<span style='color: blue; font-size: 2rem;'>Great! Your face drawing is very accurate!</span>",
+    unsafe_allow_html=True
+)
