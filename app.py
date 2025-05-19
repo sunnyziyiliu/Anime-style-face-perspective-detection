@@ -15,7 +15,7 @@ st.set_page_config(
     page_title="Anime-style face perspective detection",
     layout="wide"
 )
-st.title("Anime-style face perspective detectionp")
+st.title("Anime-style face perspective detection")
 st.write("Using 24 keypoints, detect the facial feature and verify if the perspective and proportions are accurate.")
 st.markdown(
     "AI Model Source："
