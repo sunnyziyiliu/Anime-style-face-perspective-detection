@@ -12,10 +12,10 @@ from eval_utils import evaluate, fit_midline, perp_dist
 from eval_utils import suggest_adjustments, adjust_landmark_pair
 # ——— HEAD —————————————————————
 st.set_page_config(
-    page_title="Anime-style face perspective detection",
+    page_title="Anime Face Drawing Feedback",
     layout="wide"
 )
-st.title("Anime-style face perspective detection")
+st.title("Anime Face Drawing Feedback")
 st.write("Using 24 keypoints, detect the facial feature and verify if the perspective and proportions are accurate.")
 st.markdown(
     "AI Model Source："
