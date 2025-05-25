@@ -3,19 +3,19 @@
 An interactive Streamlit app that detects 24 facial keypoints on anime-style faces, allows manual offset corrections, evaluates facial symmetry & perspective, and visualizes results.
 
 ---
-## 🔗 Source model
+## Source model
 
 (https://github.com/kanosawa/anime_face_landmark_detection)
 
 ---
 
-## 🔗 Live Demo
+## Live Demo
 
 [View the app online](https://sunnyziyiliu-anime-style-face-perspective-detection-app-rajcps.streamlit.app/)
 
 ---
 
-## 🛠️ Features
+## Features
 
 - **Automatic Keypoint Detection**  
   Uses a pretrained Cascaded Face Alignment (CFA) model to predict 24 landmarks on anime faces.
@@ -33,14 +33,14 @@ An interactive Streamlit app that detects 24 facial keypoints on anime-style fac
   Computes projection-based ratios for eye head/middle/tail and mouth, identifies if the face is turned left/right or frontal, and highlights any perspective errors.
 
 - **Color-Coded Results**  
-  - ✔️ Green text for correct  
-  - ❌ Red text for errors  
-  - ⚪ Gray text for skipped checks  
-  - ⚫ Black text for neutral orientation messages
+  - Green text for correct  
+  - Red text for errors  
+  - Gray text for skipped checks  
+  - Black text for neutral orientation messages
 
 ---
 
-## 📝 Requirements
+## Requirements
 
 Captured via `requirements.txt`:
 
