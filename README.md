@@ -1,6 +1,7 @@
 # Anime-Style Face Perspective Detection
 
-An interactive Streamlit app that detects 24 facial keypoints on anime-style faces, allows manual offset corrections, evaluates facial symmetry & perspective, and visualizes results.
+This project uses AI to detect 24 key points on an anime face, applies geometric methods to evaluate symmetry axes, parallel lines, and perspective ratios, and then gives creators both text and visual feedback so they can quickly spot and fix structural errors in their work.
+
 
 ---
 ## Source model
@@ -15,40 +16,6 @@ An interactive Streamlit app that detects 24 facial keypoints on anime-style fac
 
 ---
 
-## Features
+## Overall Workflow
 
-- **Automatic Keypoint Detection**  
-  Uses a pretrained Cascaded Face Alignment (CFA) model to predict 24 landmarks on anime faces.
-
-- **Manual Offset Corrections**  
-  Sidebar UI lets you add/remove multiple `(index, Δx, Δy)` adjustments, then apply them all at once.
-
-- **Alignment Checks**  
-  - Eye parallelism  
-  - Nose–lips–chin colinearity  
-  - (Optional) Eyebrow parallelism  
-  - (Optional) Overall feature alignment  
-
-- **Perspective Ratios & Face Orientation**  
-  Computes projection-based ratios for eye head/middle/tail and mouth, identifies if the face is turned left/right or frontal, and highlights any perspective errors.
-
-- **Color-Coded Results**  
-  - Green text for correct  
-  - Red text for errors  
-  - Gray text for skipped checks  
-  - Black text for neutral orientation messages
-
----
-
-## Requirements
-
-Captured via `requirements.txt`:
-
-```text
-streamlit>=1.10.0
-torch>=2.0.0
-torchvision>=0.15.0
-opencv-python>=4.7.0
-numpy>=1.23.0
-Pillow>=9.0.0
-altair>=4.0
+When a user uploads an anime face image, the key-point detection AI locates the 24 predefined facial landmarks and returns their coordinates. The system then draws each point and its index onto the image and displays it on a webpage. On the left, a “Key Point Offset” panel lets users fine-tune any misplaced points by entering the index and offset values. Once all coordinates are collected, the system calculates facial alignment and perspective. By checking whether lines between eye corners and brow points are parallel and whether landmarks lie on a shared midline, it assesses alignment. It also compares each landmark’s distance to the midline—if any left-right pair violates the expected perspective ratio, the system flags it. Finally, the page outputs a text report (green for correct items, red for errors, black for neutral descriptions) and, for any errors, generates three correction options—“Lock Left,” “Lock Right,” or “Average”—allowing users to select the point to fix or average; the system then computes the correct coordinate and redraws it on the image.
