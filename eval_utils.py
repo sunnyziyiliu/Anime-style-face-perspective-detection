@@ -78,7 +78,7 @@ def evaluate(landmarks, skip_expr=False,
         results.append(("Eye: Correct", "correct"))
 
     # ——— 2. midline（PCA）—————————————————
-    mid_idxs = [9, 21, 23, 1]  # 鼻尖、上嘴唇中、下嘴唇中、下巴
+    mid_idxs = [9, 21, 23, 1]
     pts_mid = np.array([landmarks[i] for i in mid_idxs], dtype=np.float32)
     mean, e = fit_midline(pts_mid)
     L = np.linalg.norm(pts_mid[0] - pts_mid[-1])
